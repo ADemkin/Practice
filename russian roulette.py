@@ -3,8 +3,8 @@ from random import randint
 '''
 yes = ['y', 'Y', 'yes', 'Yes']
 no = ['n', 'N', 'no', 'No']
-quit = ['q', 'quit', 'Quit','exit', 'Exit']
-acceptable = yes+no+quit
+quit_program = ['q', 'quit_program', 'Quit','exit', 'Exit']
+acceptable = yes+no+quit_program
 '''
 
 def main():

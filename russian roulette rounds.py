@@ -4,7 +4,7 @@ from random import randint
 def main():
     rounds = 6
     while True:
-        s = input('Enter yes to play. Enter nothing to quit if you a slacker. \n')
+        s = input('Enter yes to play. Enter nothing to quit_program if you a slacker. \n')
         if s == 'yes' or s == 'y':
             if randint(0, rounds) < 1:
                 print("BANG! You're dead!")

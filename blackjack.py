@@ -9,8 +9,8 @@ from random import randint
 
 yes = ['y', 'Y', 'yes', 'Yes']
 no = ['n', 'N', 'no', 'No']
-quit = ['q', 'quit', 'Quit', 'exit', 'Exit']
-acceptable = yes + no + quit
+quit_program = ['q', 'quit_program', 'Quit', 'exit', 'Exit']
+acceptable = yes + no + quit_program
 
 cards = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 dealer = list()
@@ -68,7 +68,7 @@ def offerCard():
                 player.append(getRandomCard())
             if answer in no:
                 print('No more cards')
-            if answer in quit:
+            if answer in quit_program:
                 break
         getStatus()
         
