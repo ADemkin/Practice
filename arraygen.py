@@ -8,7 +8,7 @@ from random import randint
 def genArray(length=100, rangeMin=0, rangeMax=255, sorted = False):
     list = []
     for i in range(0, length):
-        list.append(randint(int(rangeMin), int(rangeMax)))
+        list.append(randint(rangeMin, rangeMax))
     if sorted:
         list.sort()
     return list
