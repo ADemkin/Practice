@@ -9,7 +9,8 @@ def quick_sort(list):
     if len(list) == 0:
         return []
     if len(list) == 1:
-        return list[0]
+        return [list[0]] # bug was here: new return list always
+    # swap if needed
     elif len(list) == 2:
         if list[1] < list[0]:
             list[1], list[0] = list[0], list[1]
@@ -24,33 +25,35 @@ def quick_sort(list):
         lower = [i for i in list[1:] if i < base]
         
         
-        # создаем пустой новый список, к кторому будут присоединены все последующие
-        newlist = []
-        # костыль, пока не понял как это сделать правильно. TODO: спросить Олега или Игоря как это делать правильно!
-        newlower = quick_sort(lower)
-        newhigher = quick_sort(higher)
-        # append left part
-        if type(newlower) == int:
-            newlist.append(newlower)
-        else:
-            newlist += newlower
-        # append base part
-        newlist.append(base)
-        # append higher part
-        if type(newhigher) == int:
-            newlist.append(newhigher)
-        else:
-            newlist += newhigher
-        # конец костыля
-        # ну хоть работает как надо :D TODO: исправить костыль
-
-        # возвращаем список
-        return newlist
+        # # создаем пустой новый список, к кторому будут присоединены все последующие
+        # newlist = []
+        # # костыль, пока не понял как это сделать правильно. TODO: спросить Олега или Игоря как это делать правильно!
+        # newlower = quick_sort(lower)
+        # newhigher = quick_sort(higher)
+        # # append left part
+        # if type(newlower) == int:
+        #     newlist.append(newlower)
+        # else:
+        #     newlist += newlower
+        # # append base part
+        # newlist.append(base)
+        # # append higher part
+        # if type(newhigher) == int:
+        #     newlist.append(newhigher)
+        # else:
+        #     newlist += newhigher
+        # # конец костыля
+        # # ну хоть работает как надо :D TODO: исправить костыль
+        #
+        # # возвращаем список
+        # return newlist
 
         # not working!!!
         # update: Не работает даже после изменения кода фильтра. Почему не хочет складывать list и [int]?
-        #return quick_sort(lower) + [base] + quick_sort(higher)
+        # update: Проблема не в [base], а в том, что рекурсивный вызов можат вернуть не список, а int.
+        # update: заработало после того, как принудительно стал возвращать list в случае одного элемента!
+        return quick_sort(lower) + [base] + quick_sort(higher)
 
 
 print(quick_sort([5, 8, 3, 1, 19, 2, 4, 22, 0, 55, 34, 6, 42, 12]))
-print(quick_sort(genArray(400,0,1000, False)))
+print(quick_sort(genArray(100,0,1000, False)))
