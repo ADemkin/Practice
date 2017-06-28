@@ -20,8 +20,8 @@ def quick_sort(list):
         base = list[0]
  
         # новый вариант через list comprehension, спасибо Олегу за подсказку.
-        higher = [ i for i in list[1:len(list)] if i >= base]
-        lower = [i for i in list[1:len(list)] if i < base]
+        higher = [ i for i in list[1:] if i >= base]
+        lower = [i for i in list[1:] if i < base]
         
         
         # создаем пустой новый список, к кторому будут присоединены все последующие
