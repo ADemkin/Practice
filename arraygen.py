@@ -6,9 +6,10 @@ from random import randint
 
 
 def genArray(length=100, rangeMin=0, rangeMax=255, sorted=False):
-    list = []
-    for i in range(0, length):
-        list.append(randint(rangeMin, rangeMax))
+    #list = []
+    #for i in range(0, length):
+    #    list.append(randint(rangeMin, rangeMax))
+    list = [randint(rangeMin, rangeMax) for i in range(length)]
     if sorted:
         list.sort()
     return list
