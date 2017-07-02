@@ -20,4 +20,4 @@ def bubble_sort(arr):
 
 
 print(unsorted)
-print(insertion_sort(unsorted))
+print(bubble_sort(unsorted))
