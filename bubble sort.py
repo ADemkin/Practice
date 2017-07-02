@@ -10,7 +10,7 @@ from random import randint
 unsorted = [randint(0, 100) for i in range(15)]
 
 
-def insertion_sort(arr):
+def bubble_sort(arr):
     for j in range(len(arr) - 1):
         for i in range(len(arr) - 1):
             if arr[i] > arr[i + 1]:
