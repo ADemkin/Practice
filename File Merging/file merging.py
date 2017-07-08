@@ -12,17 +12,19 @@ def create_files():
     Both files are filled with random numbers separated by new lines.
     '''
     with open('file1.txt', 'w') as f:
+        r = 0
         for i in range(10):
-            r = random.randint(0,1000)
+            r += random.randint(0,5)
             f.write(str(r) + '\n')
     
     with open('file2.txt', 'w') as f:
+        r = 0
         for i in range(10):
-            r = random.randint(0,1000)
+            r += random.randint(0,5)
             f.write(str(r) + '\n')
 
 
-#create_files()
+create_files()
 
 def merge_files():
     '''
@@ -33,7 +35,12 @@ def merge_files():
             with open('file2.txt', 'r') as file2:
                 for line1, line2 in zip(file1, file2):
                     # simply merge data, no sorting here
-                    result.write(str(line1) + str(line2))
+                    #result.write(str(line1) + str(line2))
+                    # sorting:
+                    if line1 < line2:
+                        result.write(str(line1) + str(line2))
+                    else:
+                        result.write(str(line2) + str(line1))
 
                     
 merge_files()
