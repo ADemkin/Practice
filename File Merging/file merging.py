@@ -43,7 +43,7 @@ def merge_files(file1, file2):
     while next1 is not '' and next2 is not '':
         
         # compare and get next value
-        if next1 < next2:
+        if int(next1) < int(next2):
             new_list.append(next1)
             next1 = file1.readline()
         else:
