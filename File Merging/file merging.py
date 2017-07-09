@@ -11,24 +11,20 @@ def create_files():
     Create two files: text1.txt and text2.txt.
     Both files are filled with random numbers separated by new lines.
     '''
-    length = 15
-    gap = 5
-    
+    length = 5
+    gap = 6
     
     with open('file1.txt', 'w') as f:
         r = 0
         for i in range(length):
-            r += random.randint(0,gap)
+            r += random.randint(0, gap)
             f.write(str(r) + '\n')
     
     with open('file2.txt', 'w') as f:
         r = 0
         for i in range(length):
-            r += random.randint(0,gap)
+            r += random.randint(0, gap)
             f.write(str(r) + '\n')
-
-
-create_files()
 
 
 def merge_files(file1, file2):
@@ -37,23 +33,36 @@ def merge_files(file1, file2):
     '''
     # create new list
     new_list = []
+    
     # read first lines
     next1 = file1.readline()
     next2 = file2.readline()
+    
     # check if file end is reached
-    while next1 != '' and next2 != '':
+    while (next1 != '' and next2 != ''):
+        
+        # compare and get next value
         if next1 < next2:
             new_list.append(next1)
             next1 = file1.readline()
         else:
             new_list.append(next2)
             next2 = file2.readline()
+
+        # check for end file individually
+        if next1 == '':
+            while next2 != '':
+                new_list.append(next2)
+                next2 = file2.readline()
+        if next2 == '':
+            while next1 != '':
+                new_list.append(next1)
+                next1 = file1.readline()
+
     return new_list
 
 
-
-
-def open_files():
+def open_files_to_sort():
     '''
     Create file3.txt with numbers from file1.txt and file2.txt
     '''
@@ -71,10 +80,11 @@ def open_files():
                 newlist = merge_files(file1, file2)
                 for number in newlist:
                     result.write(number)
-    #
+                    
+                    # debug:
+                    # print(newlist)
+                    #
 
 
-
-open_files()
-#merge_files()
-
+create_files()
+open_files_to_sort()
