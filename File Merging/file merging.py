@@ -12,7 +12,7 @@ def create_files():
     Create two files: text1.txt and text2.txt.
     Both files are filled with random numbers separated by new lines.
     '''
-    length = 5
+    length = 10**7
     gap = 6
     
     with open('file1.txt', 'w') as f:
@@ -33,7 +33,7 @@ def merge_files(file1, file2):
     returns list with file1 and file2 sorted data
     '''
     # create new list
-    new_list = []
+    # new_list = []
     
     # read first lines
     next1 = file1.readline()
@@ -41,27 +41,34 @@ def merge_files(file1, file2):
     
     # check if file end is reached
     while next1 is not '' and next2 is not '':
-        
         # compare and get next value
         if int(next1) < int(next2):
-            new_list.append(next1)
+            yield(next1)
             next1 = file1.readline()
         else:
-            new_list.append(next2)
+            yield(next2)
             next2 = file2.readline()
     
     # check for end file individually
-    if next1 is '':
-        while next2 is not '':
-            new_list.append(next2)
-            next2 = file2.readline()
-    if next2 is '':
-        while next1 is not '':
-            new_list.append(next1)
-            next1 = file1.readline()
+    # if next1 is '':
+    #     while next2 is not '':
+    #         new_list.append(next2)
+    #         next2 = file2.readline()
+    # if next2 is '':
+    #     while next1 is not '':
+    #         new_list.append(next1)
+    #         next1 = file1.readline()
+    
+    while next2 is not '':
+        yield(next2)
+        next2 = file2.readline()
+
+    while next1 is not '':
+        yield(next1)
+        next1 = file1.readline()
     
     # end
-    return new_list
+    # return new_list
 
 
 def open_files_to_sort():
@@ -83,3 +90,9 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+
+
+'''
+TODO: переписать программу с использованием генераторов generator1 = (l for l in file1)
+'''
