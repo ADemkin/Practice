@@ -4,6 +4,7 @@
 # Задача объединить два текстовых файла с цифрами в один.
 
 import random
+import sys
 
 
 def create_files():
@@ -39,7 +40,7 @@ def merge_files(file1, file2):
     next2 = file2.readline()
     
     # check if file end is reached
-    while (next1 != '' and next2 != ''):
+    while next1 is not '' and next2 is not '':
         
         # compare and get next value
         if next1 < next2:
@@ -48,43 +49,37 @@ def merge_files(file1, file2):
         else:
             new_list.append(next2)
             next2 = file2.readline()
-
-        # check for end file individually
-        if next1 == '':
-            while next2 != '':
-                new_list.append(next2)
-                next2 = file2.readline()
-        if next2 == '':
-            while next1 != '':
-                new_list.append(next1)
-                next1 = file1.readline()
-
+    
+    # check for end file individually
+    if next1 is '':
+        while next2 is not '':
+            new_list.append(next2)
+            next2 = file2.readline()
+    if next2 is '':
+        while next1 is not '':
+            new_list.append(next1)
+            next1 = file1.readline()
+    
+    # end
     return new_list
 
 
 def open_files_to_sort():
     '''
-    Create file3.txt with numbers from file1.txt and file2.txt
+    Create file3.txt with numbers from opened files.
     '''
     with open('file3.txt', 'w') as result:
-        with open('file1.txt', 'r') as file1:
-            with open('file2.txt', 'r') as file2:
-                # for line1, line2 in zip(file1, file2):
-                #     # simply merge data, no sorting here
-                #     #result.write(str(line1) + str(line2))
-                #     # sorting:
-                #     if line1 < line2:
-                #         result.write(str(line1) + str(line2))
-                #     else:
-                #         result.write(str(line2) + str(line1))
+        with open(sys.argv[1], 'r') as file1:
+            with open(sys.argv[2], 'r') as file2:
                 newlist = merge_files(file1, file2)
                 for number in newlist:
                     result.write(number)
-                    
-                    # debug:
-                    # print(newlist)
-                    #
 
 
-create_files()
-open_files_to_sort()
+def main():
+    create_files()
+    open_files_to_sort()
+
+
+if __name__ == '__main__':
+    main()
