@@ -62,21 +62,19 @@ def quick_sort(list):
 
 def quick_sort_again(arr):
     '''
-    Я хочу спать, но перед сном я быстро напишу быструю сортировку, без подглядывания в основную функцию.
-    Заработало с третьего раза, забыл поставить квадратные скобки в base в самом конце
-    На данный момент это мой смый любимый алгоритм сортировки
+    Еще раз по памяти, без подглядывания.
     '''
     # рассмотрим базовые случаи
     if len(arr) == 0:
         return []
     if len(arr) == 1:
         return arr
-    # меняем индексы местами, если нужно
+    # меняем элементы массива местами, если нужно
     if len(arr) == 2:
         if arr[0] > arr[1]:
             arr[0], arr[1] = arr[1], arr[0]
         return arr
-    # основной алгоритм
+    # фильтруем и соединяем
     if len(arr) >= 3:
         base = arr[0]
         lower = [i for i in arr[1:] if i < base]
@@ -84,43 +82,7 @@ def quick_sort_again(arr):
         return quick_sort_again(lower) + [base] + quick_sort_again(higher)
 
 
-# print(quick_sort_again([5, 8, 3, 1, 19, 2, 4, 22, 0, 55, 34, 6, 42, 12]))
-# print(quick_sort_again(genArray(100, 0, 1000, False)))
+# check
+print(quick_sort_again([5, 8, 3, 1, 19, 2, 4, 22, 0, 55, 34, 6, 42, 12]))
+#print(quick_sort_again(genArray(100, 0, 1000, False)))
 
-
-#
-
-
-steps = 0
-
-
-def quick_sort_bigOh(arr):
-    '''
-    not working
-    :param arr:
-    :return:
-    '''
-    global steps
-    if len(arr) == 0:
-        return []
-    if len(arr) == 1:
-        return arr
-    if len(arr) == 2:
-        steps += 1
-        if arr[0] > arr[1]:
-            arr[0], arr[1] = arr[1], arr[0]
-        return arr
-    if len(arr) >= 3:
-        base = arr[0]
-        lower = [i for i in arr[1:] if i < base]
-        higher = [i for i in arr[1:] if i >= base]
-        return quick_sort_bigOh(lower) + [base] + quick_sort_bigOh(higher)
-        
-
-arr = genArray(10,0,50)
-print(quick_sort_bigOh(arr))
-print(steps)
-
-
-def quick_sort_non_recursive(arr):
-    pass
