@@ -67,5 +67,5 @@ def get_root_faster(number):
     return root
 
 
-print(get_root_faster(35), get_root(35))
-print(get_root_faster(36), get_root(36))
+# print(get_root_faster(35), get_root(35))
+# print(get_root_faster(36), get_root(36))
