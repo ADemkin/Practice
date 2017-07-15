@@ -12,7 +12,7 @@ def create_files():
     Create two files: text1.txt and text2.txt.
     Both files are filled with random numbers separated by new lines.
     '''
-    length = 10**7
+    length = 10**3
     gap = 6
     
     with open('file1.txt', 'w') as f:
@@ -49,16 +49,6 @@ def merge_files(file1, file2):
             yield(next2)
             next2 = file2.readline()
     
-    # check for end file individually
-    # if next1 is '':
-    #     while next2 is not '':
-    #         new_list.append(next2)
-    #         next2 = file2.readline()
-    # if next2 is '':
-    #     while next1 is not '':
-    #         new_list.append(next1)
-    #         next1 = file1.readline()
-    
     while next2 is not '':
         yield(next2)
         next2 = file2.readline()
@@ -67,7 +57,7 @@ def merge_files(file1, file2):
         yield(next1)
         next1 = file1.readline()
     
-    # end
+    # yield is used, so no return required
     # return new_list
 
 
@@ -84,7 +74,7 @@ def open_files_to_sort():
 
 
 def main():
-    create_files()
+    #create_files()
     open_files_to_sort()
 
 
